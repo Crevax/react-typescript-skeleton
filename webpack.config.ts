@@ -15,7 +15,9 @@ const envDefaults = {
 const outputPath = path.resolve(__dirname, "public");
 
 const baseConfig: webpack.Configuration = {
-  entry: "./src/index.tsx",
+  entry: {
+    app: "./src/index.tsx",
+  },
   module: {
     rules: [
       {
@@ -66,9 +68,21 @@ const baseConfig: webpack.Configuration = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    filename: "app.js?=[hash:6]",
+    filename: "[name].js?=[hash:6]",
     path: outputPath,
     publicPath: process.env.PUBLIC_PATH || envDefaults.PUBLIC_PATH,
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: "initial",
+          name: "vendor",
+          enforce: true,
+        },
+      },
+    },
   },
   plugins: [
     new ExtractCssPlugin({ filename: "[name].css?=[hash:6]" }),
@@ -85,6 +99,7 @@ const buildConfig: webpack.Configuration = {
   module: baseConfig.module,
   resolve: baseConfig.resolve,
   output: baseConfig.output,
+  optimization: baseConfig.optimization,
   plugins: [new CleanWebpackPlugin([outputPath]), ...(baseConfig.plugins || [])],
 };
 
@@ -95,6 +110,7 @@ const devConfig: webpack.Configuration = {
   module: baseConfig.module,
   resolve: baseConfig.resolve,
   output: baseConfig.output,
+  optimization: baseConfig.optimization,
   devServer: {
     contentBase: outputPath,
     compress: true,
