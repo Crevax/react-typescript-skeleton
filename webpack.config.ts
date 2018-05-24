@@ -42,7 +42,7 @@ const baseConfig: webpack.Configuration = {
       {
         test: /\.(css|scss)$/,
         use: [
-          ExtractCssPlugin.loader, // Extract CSS text
+          process.env.NODE_ENV === "production" ? ExtractCssPlugin.loader : "style-loader", // Extract CSS text
           {
             loader: "css-loader", // translates CSS into CommonJS
             options: {
