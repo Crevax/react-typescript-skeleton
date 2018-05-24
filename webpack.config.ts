@@ -16,7 +16,7 @@ const outputPath = path.resolve(__dirname, "public");
 
 const baseConfig: webpack.Configuration = {
   entry: {
-    app: "./src/index.tsx",
+    app: ["./src/index.tsx", path.resolve(__dirname, "node_modules", "sanitize.css")], // TODO: make this more flexible
   },
   module: {
     rules: [
@@ -40,7 +40,7 @@ const baseConfig: webpack.Configuration = {
         exclude: "/node_modules/",
       },
       {
-        test: /\.scss$/,
+        test: /\.(css|scss)$/,
         use: [
           ExtractCssPlugin.loader, // Extract CSS text
           {
