@@ -85,7 +85,6 @@ const baseConfig: webpack.Configuration = {
     },
   },
   plugins: [
-    new ExtractCssPlugin({ filename: "[name].css?=[hash:6]" }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.html"),
       hash: true,
@@ -100,7 +99,11 @@ const buildConfig: webpack.Configuration = {
   resolve: baseConfig.resolve,
   output: baseConfig.output,
   optimization: baseConfig.optimization,
-  plugins: [new CleanWebpackPlugin([outputPath]), ...(baseConfig.plugins || [])],
+  plugins: [
+    new CleanWebpackPlugin([outputPath]),
+    new ExtractCssPlugin({ filename: "[name].css?=[hash:6]" }),
+    ...(baseConfig.plugins || []),
+  ],
 };
 
 const devConfig: webpack.Configuration = {
