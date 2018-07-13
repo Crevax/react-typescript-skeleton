@@ -117,7 +117,7 @@ const devConfig: webpack.Configuration = {
   devServer: {
     contentBase: outputPath,
     compress: true,
-    port: process.env.DEV_SERVER_PORT || envDefaults.DEV_SERVER_PORT,
+    port: parseInt(process.env.DEV_SERVER_PORT || "") || envDefaults.DEV_SERVER_PORT,
     historyApiFallback: true,
     proxy: {
       "/api": {
