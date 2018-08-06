@@ -111,7 +111,7 @@ const buildConfig: webpack.Configuration = {
   plugins: [
     new CleanWebpackPlugin([outputPath]),
     new ExtractCssPlugin({ filename: "[name].css?=[hash:6]" }),
-    ...(baseConfig.plugins || []),
+    ...(baseConfig.plugins || []), // Typescript doesn't like that plugins can be 'undefined'
   ],
 };
 
