@@ -50,6 +50,16 @@ const baseConfig: webpack.Configuration = {
             },
           },
           {
+            loader: "postcss-loader",
+            options: {
+              plugins: () => [
+                require("autoprefixer")({
+                  browsers: ["last 3 versions"],
+                }),
+              ],
+            },
+          },
+          {
             loader: "sass-loader", // compiles Sass to CSS
           },
         ],
