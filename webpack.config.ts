@@ -40,7 +40,7 @@ const baseConfig: webpack.Configuration = {
         exclude: "/node_modules/",
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.s?css$/,
         use: [
           process.env.NODE_ENV === "production" ? ExtractCssPlugin.loader : "style-loader", // Extract CSS text
           {
