@@ -3,8 +3,9 @@ import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as ExtractCssPlugin from "mini-css-extract-plugin";
 import * as path from "path";
 import * as webpack from "webpack";
+import * as dotenv from "dotenv";
 
-require("dotenv").config();
+dotenv.config();
 
 const envDefaults = {
   DEV_SERVER_PORT: 8080,
