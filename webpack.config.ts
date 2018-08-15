@@ -4,7 +4,7 @@ import * as ExtractCssPlugin from "mini-css-extract-plugin";
 import * as path from "path";
 import * as webpack from "webpack";
 
-require("dotenv").config({ silent: true });
+require("dotenv").config();
 
 const envDefaults = {
   DEV_SERVER_PORT: 8080,
