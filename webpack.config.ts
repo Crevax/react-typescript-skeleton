@@ -119,7 +119,7 @@ const buildConfig: webpack.Configuration = {
 const devConfig: webpack.Configuration = {
   mode: "development",
   entry: baseConfig.entry,
-  devtool: "inline-source-map",
+  devtool: "eval", // Allows the debugger to catch updates on a rebuild
   module: baseConfig.module,
   resolve: baseConfig.resolve,
   output: baseConfig.output,
