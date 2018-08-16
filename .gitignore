@@ -62,3 +62,6 @@ typings/
 
 # build files
 public/
+
+# editor settings
+.vscode
