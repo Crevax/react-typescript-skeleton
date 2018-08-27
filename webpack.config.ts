@@ -17,7 +17,7 @@ const outputPath = path.resolve(__dirname, "public");
 
 const baseConfig: webpack.Configuration = {
   entry: {
-    app: ["./src/index.tsx", path.resolve(__dirname, "node_modules", "sanitize.css")], // TODO: make this more flexible
+    app: [path.resolve(__dirname, "node_modules", "sanitize.css"), "./src/index.tsx"], // TODO: make this more flexible
   },
   module: {
     rules: [
