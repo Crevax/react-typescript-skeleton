@@ -46,9 +46,6 @@ const baseConfig: webpack.Configuration = {
           process.env.NODE_ENV === "production" ? ExtractCssPlugin.loader : "style-loader", // Extract CSS text
           {
             loader: "css-loader", // translates CSS into CommonJS
-            options: {
-              minimize: true,
-            },
           },
           {
             loader: "postcss-loader",
